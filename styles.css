@@ -1,0 +1,57 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const course = urlParams.get('course');
+
+    if (course) {
+        const courseDetails = {
+            engineering: {
+                name: "Engineering",
+                description: "Engineering is the use of scientific principles to design and build machines, structures, and other items.",
+                eligibility: "12th Science",
+                career: "Engineer, Researcher, Consultant"
+            },
+            medicine: {
+                name: "Medicine",
+                description: "Medicine is the science and practice of diagnosing, treating, and preventing disease.",
+                eligibility: "12th Science with Biology",
+                career: "Doctor, Surgeon, Medical Researcher"
+            },
+            accounting: {
+                name: "Accounting",
+                description: "Accounting involves recording, classifying, and summarizing financial transactions.",
+                eligibility: "12th Commerce",
+                career: "Accountant, Auditor, Financial Analyst"
+            },
+            business: {
+                name: "Business Management",
+                description: "Business management focuses on the organization and operation of businesses.",
+                eligibility: "12th Commerce",
+                career: "Business Manager, Entrepreneur, Consultant"
+            },
+            literature: {
+                name: "Literature",
+                description: "Literature is the art of written works, including fiction and non-fiction.",
+                eligibility: "12th Arts",
+                career: "Writer, Editor, Literary Critic"
+            },
+            finearts: {
+                name: "Fine Arts",
+                description: "Fine Arts include visual and performing arts such as painting, sculpture, and theater.",
+                eligibility: "12th Arts",
+                career: "Artist, Performer, Art Teacher"
+            }
+        };
+
+        const courseInfo = courseDetails[course];
+        if (courseInfo) {
+            const courseDetailsContainer = document.getElementById('course-details');
+            courseDetailsContainer.innerHTML = `
+                <h2>${courseInfo.name}</h2>
+                <p><strong>Description:</strong> ${courseInfo.description}</p>
+                <p><strong>Eligibility:</strong> ${courseInfo.eligibility}</p>
+                <p><strong>Career Options:</strong> ${courseInfo.career}</p>
+            `;
+        }
+    }
+});
